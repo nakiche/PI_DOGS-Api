@@ -4,12 +4,12 @@ const getDog  = require('./getDog.js');
 
 var postDog =  async function({id,name,image,min_height,max_height,
 		min_weight,max_weight,min_life_span,
- 		max_life_span,temperament,owner
+ 		max_life_span,temperament
  	}){
 
 	if (!id || !name || !image || !min_height || !max_height 
  	|| !min_weight || !max_weight || !min_life_span 
- 	|| !max_life_span || !temperament || !owner || temperament.length < 1 ) {
+ 	|| !max_life_span || !temperament || temperament.length < 1 ) {
  		
 	throw new Error ('Data missing')
  	}else{
@@ -21,8 +21,7 @@ var postDog =  async function({id,name,image,min_height,max_height,
         "min_weight": min_weight,
         "max_weight":max_weight,
         "height": `${min_height} - ${max_height}`,
-        "life_span": `${min_life_span} - ${max_life_span}`,   
-        "owner": owner		
+        "life_span": `${min_life_span} - ${max_life_span}`	
       })
 		let DogTemperament = await Temperament.create({
         "id": id,
